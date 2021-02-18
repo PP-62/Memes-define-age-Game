@@ -1,5 +1,3 @@
-#window
-
 main_set = {"geometry":"500x500",
         "background":"white",
         "title":"meme game"}
@@ -12,14 +10,17 @@ main_set = {"geometry":"500x500",
 
 quitButton = {"bg":"gray",
                 "fg":"white",
+              "font":"Arial 12",
                 "text":"Выход"}
 
 infoButton = {"bg":"gray",
                 "fg":"white",
+              "font":"Arial 12",
                 "text":"Инфо"}
 
 startButton = {"bg":"gray",
                 "fg":"white",
+               "font":"Arial 20",
                 "text":"Старт"}
 
 #Main
@@ -49,7 +50,29 @@ button_set = {"height":1,
 
 #Memes
 
-meme = {"name":"имя",
+memes =[{"name":"имя",
         "text":"подпись",
         "info":"Инфа о меме",
+        "img":"Buttons/like.jpg"},
+        
+        {"name":"имя 2",
+        "text":"подпись 2",
+        "info":"Инфа о меме 2",
+        "img":"Buttons/like.jpg"},
+        {"name":"имя 3",
+        "text":"подпись 3",
+        "info":"Инфа о меме 3",
+        "img":"Buttons/like.jpg"},
+        {"name":"имя 4",
+        "text":"подпись 4",
+        "info":"Инфа о меме 4",
+        "img":"Buttons/like.jpg"},
+        {"name":"имя 5",
+        "text":"подпись 5",
+        "info":"Инфа о меме 5",
+        "img":"Buttons/like.jpg"},
+        {"name":"имя 6",
+        "text":"подпись 6",
+        "info":"Инфа о меме 6",
         "img":"Buttons/like.jpg"}
+        ]
