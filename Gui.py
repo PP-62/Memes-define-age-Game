@@ -45,10 +45,11 @@ meme_image = ""
 #meme_image = tk.PhotoImage(file = meme["img"])
 #добавить изображение в канвас
 
-meme_name = tk.Label(root,text = meme["name"],fg = name_meme_set["color"],font = name_meme_set["font"],height = name_meme_set["height"],width = name_meme_set["width"])
-meme_text = tk.Label(root,text = meme["text"],fg = text_meme_set["color"],font = text_meme_set["font"],height = text_meme_set["height"],width = text_meme_set["width"])
-canvas = tk.Canvas(root,height =canv_set["height"],width = canv_set["width"],bg = canv_set["background"])
-buttons=tk.Frame(root,height = button_set["height"],width = button_set["width"]*2)
+main = tk.Frame(root)
+meme_name = tk.Label(main,text = meme["name"],fg = name_meme_set["color"],font = name_meme_set["font"],height = name_meme_set["height"],width = name_meme_set["width"])
+meme_text = tk.Label(main,text = meme["text"],fg = text_meme_set["color"],font = text_meme_set["font"],height = text_meme_set["height"],width = text_meme_set["width"])
+canvas = tk.Canvas(main,height =canv_set["height"],width = canv_set["width"],bg = canv_set["background"])
+buttons=tk.Frame(main,height = button_set["height"],width = button_set["width"]*2)
 like = tk.Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["like"],bg = button_set["like_color"],font = button_set["font"])
 dislike = tk.Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["dislike"],bg = button_set["dislike_color"],font = button_set["font"])
 
