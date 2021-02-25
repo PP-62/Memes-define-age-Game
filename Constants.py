@@ -48,6 +48,13 @@ button_set = {"height":1,
               "dislike":"dislike",
               "dislike_color":"red"}
 
+result_text_set = {"text":"подпись",
+                   "color":"black",
+                   "font":"Arial 8",
+                   "font_val":"Arial 14",
+                   "height":2,
+                   "width":20}
+
 #Memes
 
 memes =[{"name":"имя",
