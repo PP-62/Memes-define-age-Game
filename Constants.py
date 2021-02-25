@@ -47,11 +47,11 @@ button_set = {"height":1,
               "like_color":"green",
               "dislike":"dislike",
               "dislike_color":"red"}
-
-result_text_set = {"text":"подпись",
+#end
+result_text_set = {"text":"ваш результат",
                    "color":"black",
-                   "font":"Arial 8",
-                   "font_val":"Arial 14",
+                   "font":"Arial 20",
+                   "font_val":"Arial 32",
                    "height":2,
                    "width":20}
 

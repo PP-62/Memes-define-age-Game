@@ -36,22 +36,26 @@ def upd_img(meme):
     pilImage = pilImage.resize((200, 200), Image.ANTIALIAS)
     meme_image = ImageTk.PhotoImage(pilImage)
 
-def result(name,value:bool):
+def upd(name,value:bool):
     
     global meme,counter
-    add_res(name,value,results)
+    add_res(name,value,data)
     #change meme
     counter+=1
-    print(results)
+    print(data)
     if counter == len(meme_list):
         game_screen.place_forget()
         result_screen.place(relx=0,  rely=0, relwidth=1,  relheight=1)
+        end()
     else:
         meme = meme_list[counter]
         meme_name.config(text = meme["name"])
         meme_text.config(text = meme["text"])
         upd_img(meme)
         IMG.config(image = meme_image)
+
+def end():
+    result_text.configure(text = result)
 
 def menu_quit():
     menu.quit()
@@ -71,7 +75,8 @@ def menu_start():
 
 meme_list = get_memes(memes,3)
 counter = 0
-results = mk_res()
+data = mk_res()
+result = 0
 
 
 # Подкачиваем нужное изображение
@@ -119,11 +124,12 @@ infoButton = Button(menu, bg=infoButton["bg"], fg=infoButton["fg"], text=infoBut
 startButton = Button(menu, bg=startButton["bg"], fg=startButton["fg"], text=startButton["text"], command=menu_start, font=startButton["font"])
 
 #main
-like = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["like"],bg = button_set["like_color"],font = button_set["font"],command = lambda:result(meme["name"],True))
-dislike = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["dislike"],bg = button_set["dislike_color"],font = button_set["font"],command = lambda:result(meme["name"],False))
+like = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["like"],bg = button_set["like_color"],font = button_set["font"],command = lambda:upd(meme["name"],True))
+dislike = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["dislike"],bg = button_set["dislike_color"],font = button_set["font"],command = lambda:upd(meme["name"],False))
 
 
-    #
+#
+
 # Пакуемся 
 
 #фрейм
@@ -142,6 +148,10 @@ meme_name.pack(side='top')
 IMG.pack(side='top')
 meme_text.pack(side='top')
 buttons.pack(side='top')
+
+#results
+result_top_text.place(relx=0.3,  rely=0.2, relwidth=0.4,  relheight=0.1)
+result_text.place(relx=0.4,  rely=0.4, relwidth=0.2,  relheight=0.1)
 
 # Гриды
 like.grid(row = 1,column = 1)
