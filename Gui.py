@@ -2,11 +2,13 @@ from tkinter import *
 from PIL import Image, ImageTk
 from Constants import *
 from random import randint
+import pickle
 
 ######хранение результатов
 
-def mk_res():
-    return {}
+# def mk_res():
+
+#     return {}
 
 def add_res(n,v,results):
     results[n] = v
@@ -36,10 +38,10 @@ def upd_img(meme):
     pilImage = pilImage.resize((200, 200), Image.ANTIALIAS)
     meme_image = ImageTk.PhotoImage(pilImage)
 
-def upd(name,value:bool):
+def upd(name,id,value:bool):
     
     global meme,counter
-    add_res(name,value,data)
+    add_res(id,value,data)
     #change meme
     counter+=1
     print(data)
@@ -55,6 +57,13 @@ def upd(name,value:bool):
         IMG.config(image = meme_image)
 
 def end():
+    clean_data = [[0]*22]
+    print(clean_data)
+    for i in data.keys():
+        for j in range(len(clean_data)):
+            clean_data[0][j] += int(memes[int(i)]["data"][j])
+    loaded_model = pickle.load(open("liner_model.sav", 'rb'))
+    result = int(loaded_model.predict(clean_data))/10
     result_text.configure(text = result)
 
 def menu_quit():
@@ -75,8 +84,9 @@ def menu_start():
 
 meme_list = get_memes(memes,3)
 counter = 0
-data = mk_res()
+data = {}
 result = 0
+
 
 
 # Подкачиваем нужное изображение
@@ -124,8 +134,8 @@ infoButton = Button(menu, bg=infoButton["bg"], fg=infoButton["fg"], text=infoBut
 startButton = Button(menu, bg=startButton["bg"], fg=startButton["fg"], text=startButton["text"], command=menu_start, font=startButton["font"])
 
 #main
-like = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["like"],bg = button_set["like_color"],font = button_set["font"],command = lambda:upd(meme["name"],True))
-dislike = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["dislike"],bg = button_set["dislike_color"],font = button_set["font"],command = lambda:upd(meme["name"],False))
+like = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["like"],bg = button_set["like_color"],font = button_set["font"],command = lambda:upd(meme["name"],meme["id"],True))
+dislike = Button(buttons,height = button_set["height"],width = button_set["width"],text = button_set["dislike"],bg = button_set["dislike_color"],font = button_set["font"],command = lambda:upd(meme["name"],meme["id"],False))
 
 
 #
