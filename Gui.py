@@ -56,6 +56,7 @@ def upd(name,id,value:bool):
         upd_img(meme)
         IMG.config(image = meme_image)
 
+
 def end():
     clean_data = [[0]*22]
     print(clean_data)
