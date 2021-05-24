@@ -59,10 +59,11 @@ def upd(name,id,value:bool):
 
 def end():
     clean_data = [[0]*22]
-    print(clean_data)
+    
     for i in data.keys():
         for j in range(len(clean_data)):
-            clean_data[0][j] += int(memes[int(i)]["data"][j])
+            clean_data[0][j] += int(memes[int(i)]["data"][j]) if data[i] else 0
+    print(clean_data)
     loaded_model = pickle.load(open("liner_model.sav", 'rb'))
     result = int(loaded_model.predict(clean_data))/10
     result_text.configure(text = result)
