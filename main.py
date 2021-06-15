@@ -77,6 +77,7 @@ def menu_info():
     info.geometry('200x100+450+350')
     info.mainloop()
 
+
 def menu_start():
     menu.place_forget()
     game_screen.place(relx=0,  rely=0, relwidth=1,  relheight=1)
